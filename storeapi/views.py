@@ -26,3 +26,17 @@ def add_a_product():
     products.append(new_product)
 
     return jsonify({"message":f'Product {productName} successfully added'}),200
+
+@app.route('/api/v1/products', methods=['GET'])
+def fetch_products():
+    if len(products) <1:
+        return jsonify ({
+            "status":"Fail",
+            "message":"No products in inventory"
+        })
+
+    if len(products) >1:
+        return jsonify({
+            "message":"Available Products",
+            "Products":products
+        })
