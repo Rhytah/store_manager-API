@@ -10,6 +10,12 @@ class BaseTestCase(unittest.TestCase):
             "productName":"Foam",
             "productPrice":3000
         }
+        self.sale_data={
+            "saleId":'1',
+            "productName":"Foam",
+            "created_by":"myself",
+            "details":"Mattress material"
+        }
      
 if __name__ == "__main__":
     unittest.main()
