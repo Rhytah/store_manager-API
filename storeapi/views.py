@@ -1,6 +1,6 @@
 from flask import Flask,json,request, jsonify
 
-from .models import Product, products, User, Sale,sale_orders
+from .models import Product, products, User, Sale,sale_orders,a_product
 
 app= Flask(__name__)
 
@@ -39,4 +39,22 @@ def fetch_products():
         return jsonify({
             "message":"Available Products",
             "Products":products
+        }),200
+
+@app.route('/api/v1/products/<int:productId>',methods=['GET'])
+def fetch_a_specific_product(productId):
+    if len(products) <1:
+        return jsonify ({
+            "status":"Fail",
+            "message":"No products in inventory"
         })
+
+    
+    if len(products)>1:
+        for a_product in products:
+            if a_product['productId']==productId:
+                return jsonify({
+                    "message":"You have fetched product",
+                    "Product":a_product
+                }),200
+        return jsonify({"Error":"Product not found , check to see that you wrote the right ID"})
