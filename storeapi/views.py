@@ -8,7 +8,7 @@ app= Flask(__name__)
 def trya():
     return jsonify({"message":"it's working"})
 
-@app.route("/api/v1/products", methods =["POST"])
+@app.route("/api/v1/admin/products", methods =["POST"])
 def add_a_product():
     request_data=request.get_json()
     productId=len(products)+1
@@ -25,4 +25,4 @@ def add_a_product():
     new_product={"productId":productId,"productName":productName,"productPrice":productPrice}
     products.append(new_product)
 
-    return jsonify({"message":f'Product {productName} successfully added'})
+    return jsonify({"message":f'Product {productName} successfully added'}),200
