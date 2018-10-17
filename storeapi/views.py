@@ -58,3 +58,16 @@ def fetch_a_specific_product(productId):
                     "Product":a_product
                 }),200
         return jsonify({"Error":"Product not found , check to see that you wrote the right ID"})
+
+@app.route('/api/v1/attendant/sales',methods=['POST'])
+def add_sale_order():
+    sale_data=request.get_json()
+    saleId=len(sale_orders)+1
+    productName=sale_data.get('productName')
+    created_by=sale_data.get('created_by')
+    details =sale_data.get('details')
+
+    new_sale_order=(saleId, productName, created_by,details)
+    sale_orders.append(new_sale_order)
+
+    return jsonify({"message":"You have successfully created a sale order"})

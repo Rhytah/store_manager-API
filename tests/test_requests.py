@@ -24,7 +24,18 @@ class RequestTestCase(BaseTestCase):
         self.assertEqual(response.status_code,200)
     
     def test_fetch_single_product(self):
-
+        
         response = self.test_client.get(
             '/api/v1/products/1',data=json.dumps(self.request_data),  content_type='application/json')
         self.assertEqual(response.status_code,200)
+
+
+    def test_add_sale_order(self):    
+        response = self.test_client.post(
+            '/api/v1/attendant/sales', data=json.dumps(self.sale_data), content_type='application/json'
+        )
+        self.assertEqual(response.status_code,200)
+        self.assertIn(
+            'You have successfully created a sale order', str(response.data)
+        )
+
