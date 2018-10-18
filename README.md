@@ -1,6 +1,10 @@
 # store_manager-API
 API endpoints to manage store data
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/c12a0e5277a846a7a1aa/maintainability)](https://codeclimate.com/github/Rhytah/store_manager-API/maintainability)
+[![Build Status](https://travis-ci.org/Rhytah/store_manager-API.svg?branch=ft-161237635--admin-fetch-all-sale-records)](https://travis-ci.org/Rhytah/store_manager-API)
+
+
 ### Tools
 
 * Text editor where we write our project files. (VScode)
