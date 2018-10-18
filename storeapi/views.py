@@ -88,3 +88,19 @@ def fetch_a_sale_order(saleId):
                 "message":"You have fetched a sale order",
                 "Sale_order":a_sale_order
             })
+
+@app.route('/api/v1/admin/sales', methods=['GET'])
+def fetch_all_sale_orders():
+    if len(sale_orders) <1:
+        return jsonify ({
+            "status":"Fail",
+            "message":"No sale orders at the moment"
+        })
+
+    if len(sale_orders) >1:
+        return jsonify({
+            "message":"Sale orders",
+            "Sales":sale_orders
+        }),200
+
+     
