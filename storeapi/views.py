@@ -1,6 +1,6 @@
 from flask import Flask,json,request, jsonify
 
-from .models import Product, products, User, Sale,sale_orders,a_product
+from .models import Product, products, User, Sale,sale_orders,a_product,a_sale_order
 
 app= Flask(__name__)
 
@@ -67,7 +67,24 @@ def add_sale_order():
     created_by=sale_data.get('created_by')
     details =sale_data.get('details')
 
-    new_sale_order=(saleId, productName, created_by,details)
+    new_sale_order={'saleId':saleId, 'productName':productName, 'created_by':created_by,'details':details}
     sale_orders.append(new_sale_order)
 
     return jsonify({"message":"You have successfully created a sale order"})
+
+
+@app.route('/api/v1/sales/<int:saleId>', methods=['GET'])
+def fetch_a_sale_order(saleId):
+    if len(sale_orders)<1:
+        return jsonify({
+            "status":"Fail",
+            "message":"NO sale orders at the moment"
+        })
+
+    
+    for a_sale_order in sale_orders:
+        if a_sale_order['saleId']==saleId:
+            return jsonify({
+                "message":"You have fetched a sale order",
+                "Sale_order":a_sale_order
+            })

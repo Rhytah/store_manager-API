@@ -38,4 +38,9 @@ class RequestTestCase(BaseTestCase):
         self.assertIn(
             'You have successfully created a sale order', str(response.data)
         )
-
+    def test_fetch_single_sale_order(self):
+        response = self.test_client.get(
+            '/api/v1/sales/1', data=json.dumps(self.sale_data), content_type='application/json'
+        )
+        self.assertEqual(response.status_code,200)
+        
