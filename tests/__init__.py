@@ -6,7 +6,7 @@ class BaseTestCase(unittest.TestCase):
     def setUp(self):
         self.test_client = app.test_client()
         self.request_data={
-            "productId":'1',
+            "productId":1,
             "productName":"Foam",
             "productPrice":3000
         }

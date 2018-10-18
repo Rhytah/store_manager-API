@@ -1,6 +1,6 @@
 class Config:
     DEBUG=False
-    #APP_SECRET = 'andela'
+
 
 class DevelopmentConfig(Config):
     DEBUG=True

@@ -1,6 +1,6 @@
 
 from app import create_app
-from tracker.mtracker import app
+from storeapi.views import app
 
 app = create_app('development')
 

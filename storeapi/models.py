@@ -14,6 +14,7 @@ class Product:
         self.productName=productName
         self.productPrice=productPrice
 
+
 class Sale:
     def __init__(self, saleId,productName,created_by, details):
         self.saleId=saleId

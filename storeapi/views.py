@@ -4,10 +4,6 @@ from .models import Product, products, User, Sale,sale_orders,a_product,a_sale_o
 
 app= Flask(__name__)
 
-@app.route('/', methods=['GET'])
-def trya():
-    return jsonify({"message":"it's working"})
-
 @app.route("/api/v1/admin/products", methods =["POST"])
 def add_a_product():
     request_data=request.get_json()
@@ -29,35 +25,40 @@ def add_a_product():
 
 @app.route('/api/v1/products', methods=['GET'])
 def fetch_products():
-    if len(products) <1:
-        return jsonify ({
-            "status":"Fail",
-            "message":"No products in inventory"
-        })
+    # if len(products) <1:
+    #     return jsonify ({
+    #         "status":"Fail",
+    #         "message":"No products in inventory"
+    #     }),404
 
     if len(products) >1:
         return jsonify({
             "message":"Available Products",
             "Products":products
         }),200
+    
+    return jsonify({"Error":"Products not found "})
+
 
 @app.route('/api/v1/products/<int:productId>',methods=['GET'])
 def fetch_a_specific_product(productId):
     if len(products) <1:
         return jsonify ({
-            "status":"Fail",
+            "Status":"Fail", 
             "message":"No products in inventory"
-        })
+            }),404
 
-    
-    if len(products)>1:
-        for a_product in products:
-            if a_product['productId']==productId:
-                return jsonify({
-                    "message":"You have fetched product",
-                    "Product":a_product
-                }),200
-        return jsonify({"Error":"Product not found , check to see that you wrote the right ID"})
+
+    for a_product in products:
+        if a_product['productId']==productId:
+            return jsonify({
+                "message":"You have fetched product",
+                "Product":a_product
+            }),200
+
+    return jsonify({
+        "Error":"Product not found , check to see that you wrote the right ID"
+        })
 
 @app.route('/api/v1/attendant/sales',methods=['POST'])
 def add_sale_order():
@@ -70,7 +71,7 @@ def add_sale_order():
     new_sale_order={'saleId':saleId, 'productName':productName, 'created_by':created_by,'details':details}
     sale_orders.append(new_sale_order)
 
-    return jsonify({"message":"You have successfully created a sale order"})
+    return jsonify({"message":"You have successfully created a sale order"}),200
 
 
 @app.route('/api/v1/sales/<int:saleId>', methods=['GET'])
@@ -79,7 +80,7 @@ def fetch_a_sale_order(saleId):
         return jsonify({
             "status":"Fail",
             "message":"NO sale orders at the moment"
-        })
+        }),404
 
     
     for a_sale_order in sale_orders:
@@ -87,7 +88,10 @@ def fetch_a_sale_order(saleId):
             return jsonify({
                 "message":"You have fetched a sale order",
                 "Sale_order":a_sale_order
-            })
+            }),200
+    
+    return jsonify({"Error":"Order not found , check to see that you wrote the right ID"})
+
 
 @app.route('/api/v1/admin/sales', methods=['GET'])
 def fetch_all_sale_orders():
@@ -95,7 +99,7 @@ def fetch_all_sale_orders():
         return jsonify ({
             "status":"Fail",
             "message":"No sale orders at the moment"
-        })
+        }),404
 
     if len(sale_orders) >1:
         return jsonify({
@@ -103,4 +107,4 @@ def fetch_all_sale_orders():
             "Sales":sale_orders
         }),200
 
-     
+    return jsonify({"Error":"Orders not found "})
