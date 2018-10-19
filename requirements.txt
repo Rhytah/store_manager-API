@@ -1,4 +1,4 @@
-python-3.6.5
+python-3.6
 astroid==2.0.4
 atomicwrites==1.2.1
 attrs==18.2.0
