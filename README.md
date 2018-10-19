@@ -8,6 +8,10 @@ API endpoints to manage store data
 [![Coverage Status](https://coveralls.io/repos/github/Rhytah/store_manager-API/badge.svg?branch=ft-161237635--admin-fetch-all-sale-records)](https://coveralls.io/github/Rhytah/store_manager-API?branch=ft-161237635--admin-fetch-all-sale-records)
 
 
+[![codecov](https://codecov.io/gh/Rhytah/store_manager-API/branch/master/graph/badge.svg)](https://codecov.io/gh/Rhytah/store_manager-API)
+
+
+
 ### Tools
 
 * Text editor where we write our project files. (VScode)
