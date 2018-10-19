@@ -56,5 +56,8 @@ This is version one"v1" of the API
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/fd78148dfa33db6ba32c)
 
+## Hosted app url
+- https://rhytah-store-manager-api.herokuapp.com/
+
 ## Author
 - [Rhytah] https://github.com/Rhytah
