@@ -18,7 +18,7 @@ def add_a_product():
     productPrice = request_data.get('productPrice')
 
 
-    if not productName or productName =='  ' or productName == type(int):
+    if not productName or productName =='  ' or productName ==type(int):
         return({'message':"Product Name cannot be blank or a number"})
 
     if productPrice =="":
@@ -73,6 +73,12 @@ def add_sale_order():
     productName=sale_data.get('productName')
     created_by=sale_data.get('created_by')
     details =sale_data.get('details')
+
+    if len(productName)<4:
+        return jsonify({"message":"Please Enter a valid Product Name"})
+
+    if len(created_by) < 5:
+        return jsonify({"message":"Input should be at least 5 characters long"})
 
     new_sale_order={'saleId':saleId, 'productName':productName, 'created_by':created_by,'details':details}
     sale_orders.append(new_sale_order)
