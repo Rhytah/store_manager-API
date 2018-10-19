@@ -4,6 +4,12 @@ from .models import Product, products, User, Sale,sale_orders,a_product,a_sale_o
 
 app= Flask(__name__)
 
+@app.route('/')
+@app.route('/index')
+def index():
+    return 'StoreManager-Api, Manage all your products and sales efficiently'
+            
+
 @app.route("/api/v1/admin/products", methods =["POST"])
 def add_a_product():
     request_data=request.get_json()

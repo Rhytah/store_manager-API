@@ -50,4 +50,9 @@ class RequestTestCase(BaseTestCase):
         response = self.test_client.get( 
             '/api/v1/admin/sales', data=json.dumps(self.sale_data), content_type = 'application/json')
         self.assertEqual(response.status_code,200)
-        
+    
+    def test_index(self):
+        response = self.test_client.get(
+            '/'
+        )
+        self.assertEqual(response.status_code,200)
