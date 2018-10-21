@@ -51,12 +51,12 @@ This is version one"v1" of the API
 ## End Points(Required Features)
 |           End Point                                 |            Functionality                   |
 |   -----------------------------------------------   | -----------------------------------------  |
-|     POST api/v1/admin/products                      |             Create a product               |
+|     POST api/v1/products                            |             Create a product               |
 |     GET  api/v1/products                            |             Fetch all products             |
 |     GET  api/v1/products/<int:productId>            |             Fetch a product                |
-|     POST api/v1/attendant/sales                     |             Add a sale order               |
+|     POST api/v1/sales                               |             Add a sale order               |
 |     GET  api/v1/sales/<int:saleId>                  |             Fetch a specific sale order    |
-|     GET  api/v1/admin/sales                         |             Admin fetch all sale orders    |
+|     GET  api/v1/sales                               |             Admin fetch all sale orders    |
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/fd78148dfa33db6ba32c)
 
