@@ -4,9 +4,12 @@ sale_orders=[]
 a_sale_order={}
 
 class User:
-    def __init__(self, name,role):
-        self.name=name
-        self.role=role
+    def __init__(self,userId,username,password,role):
+        self.userId=userId
+        self.username=username
+        self.password=password
+        self.role=bool(role)
+        
 
 class Product:
     def ___init__(self, productId,productName,productPrice):
