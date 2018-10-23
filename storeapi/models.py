@@ -1,8 +1,3 @@
-products=[]
-a_product={}
-sale_orders=[]
-a_sale_order={}
-
 class User:
     def __init__(self,userId,username,password,role):
         self.userId=userId
@@ -16,7 +11,8 @@ class Product:
         self.productId=productId
         self.productName=productName
         self.productPrice=productPrice
-
+products=[]
+a_product={}
 
 class Sale:
     def __init__(self, saleId,productName,created_by, details):
@@ -24,3 +20,5 @@ class Sale:
         self.productName=productName
         self.created_by=created_by
         self.details=details
+sale_orders=[]
+a_sale_order={}

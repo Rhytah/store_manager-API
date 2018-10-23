@@ -13,7 +13,14 @@ class BaseTestCase(unittest.TestCase):
             'username': 'admin',
             'password': 'pass'
         }
-        
+        self.auth_data2 ={
+            'username':'',
+            'password':''
+        }
+        self.auth_data3={
+            "username":'admin',
+            "password":'password'
+        }
         self.request_data={
             "productId":1,
             "productName":"Foam",
@@ -34,6 +41,7 @@ class BaseTestCase(unittest.TestCase):
                                     )
         self.assertEqual(response.status_code, 200)
         self.assertIn('access_token', str(response.data))
-     
+
+
 if __name__ == "__main__":
     unittest.main()

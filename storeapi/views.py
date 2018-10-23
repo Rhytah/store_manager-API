@@ -70,7 +70,7 @@ def add_a_product():
         products.append(new_product)
 
         return jsonify({"message":f'Product {productName} successfully added'}),200
-    return jsonify(message="Acess denied for non admins"), 401
+    return jsonify(message="Access denied for non admins"), 401
 
 @app.route('/api/v1/products', methods=['GET'])
 def fetch_products():
