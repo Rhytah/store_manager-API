@@ -1,4 +1,5 @@
 from storeapi import app
+from storeapi.views import auth_views,sale_views,product_views
 from flask import Flask
 from config import app_configuration
 from flask_jwt_extended import (JWTManager, create_access_token,
