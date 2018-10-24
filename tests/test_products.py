@@ -1,6 +1,5 @@
 from tests import BaseTestCase
-import json
-from flask import jsonify
+from flask import jsonify,json,Flask
 from flask_jwt_extended import JWTManager, create_access_token
 
 class RequestTestCase(BaseTestCase):
@@ -29,48 +28,52 @@ class RequestTestCase(BaseTestCase):
             'Access denied, Log in as admin to add Products', str(response.data)
         )
     def test_admin_can_add_product(self): 
-        response = self.test_client.post('/api/v1/login',
-                                    data=json.dumps(self.auth_data),
-                                    content_type='application/json'
-                                    )
-        self.assertEqual(response.status_code, 200)
-        self.assertIn('access_token', str(response.data))
-        
-        login_response = response.json
-        self.token = login_response['access_token']
-        response = self.test_client.post('/api/v1/products',
-                            data=json.dumps(self.request_data),
-                            content_type='application/json',
-                            headers={'Authorization':f'Bearer {self.token}'}
-                            )
-        self.assertEqual(response.status_code, 200)
+        with self.app.app_context():
+            token = create_access_token('admin')
+            headers={'Authorization':f'Bearer {token}'}
+
+            response = self.test_client.post(
+                '/api/v1/products',
+                headers=headers,
+                content_type='application/json')
+            return(response.status)
+        self.assertIn(
+            "Product Foam successfully added", str (response.data))
     
     def test_fetch_products(self):
-        response = self.test_client.post('/api/v1/login',
-                                    data=json.dumps(self.auth_data),
-                                    content_type='application/json'
-                                    )
-        # self.assertEqual(response.status_code, 200)
-        self.assertIn('access_token', str(response.data))
-        
-        login_response = response.json
-        self.token = login_response['access_token']
+        with self.app.app_context():
+            token = create_access_token('admin')
+            headers={'Authorization':f'Bearer {token}'}
+
+            response = self.test_client.post(
+                '/api/v1/products',
+                headers=headers,
+                content_type='application/json')
+            return(response.status)        
+    
         response = self.test_client.post('/api/v1/products',
-                            data=json.dumps(self.request_data),
+                            headers=headers,
                             content_type='application/json',
-                            headers={'Authorization':
-                                        'Bearer {}'.format(self.token)})
-      
+                            data=json.dumps(self.request_data)
+                            )      
         self.assertEqual(response.status_code, 200)
+
         response = self.test_client.get( 
             '/api/v1/products', data=json.dumps(self.request_data), content_type = 'application/json')
         self.assertEqual(response.status_code,200)
         self.assertIn("Available Products", str(response.data))
     
     def test_fetch_single_product(self):
-        response=self.test_client.post(
-            'api/v1/products', data=json.dumps(self.request_data), content_type = 'application/json')
+        with self.app.app_context():
+            token = create_access_token('admin')
+            headers={'Authorization':f'Bearer {token}'}
+
+            response = self.test_client.post(
+                '/api/v1/products',
+                headers=headers,
+                content_type='application/json')
+            return(response.status)
         response = self.test_client.get(
-            '/api/v1/products/1',  content_type='application/json')
+            '/api/v1/products/1', data=json.dumps(self.request_data), content_type='application/json')
         self.assertEqual(response.status_code,200)
         
