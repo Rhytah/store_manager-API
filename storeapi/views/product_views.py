@@ -18,6 +18,7 @@ admin = User(1, 'admin','pass', True )
 @app.route("/api/v1/products", methods =["POST"])
 @jwt_required
 def add_products():
+
     current_user = get_jwt_identity()
     if current_user == 'admin':
         return product.add_a_product(),200

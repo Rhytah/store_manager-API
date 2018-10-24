@@ -49,20 +49,38 @@ class RequestTestCase(BaseTestCase):
         #         content_type='application/json')
         #     return(response.status)        
 
-        response = self.test_client.post('/api/v1/products',
-                            content_type='application/json',
-                            data=json.dumps(self.request_data)
-                            )      
-        self.assertEqual(response.status_code, 200)
+        # response = self.test_client.post('/api/v1/products',
+        #                     content_type='application/json',
+        #                     data=json.dumps(self.request_data)
+        #                     )      
+        # self.assertEqual(response.status_code, 200)
 
         response = self.test_client.get( 
             '/api/v1/products', data=json.dumps(self.request_data), content_type = 'application/json')
         self.assertEqual(response.status_code,200)
-        self.assertIn("Available Products", str(response.data))
+        self.assertIn("Operation Success", str(response.data))
     
-    def test_fetch_single_product(self):
+    def test_fetch_single_product_emptylist(self):
         response = self.test_client.get(
             '/api/v1/products/1', data=json.dumps(self.request_data), content_type='application/json')
-        self.assertEqual(response.status_code,200)
-        self.assertIn("Operation Success", str(response.data))
+        self.assertEqual(response.status_code,404)
+        self.assertIn(  "No products in inventory", str(response.data))
         
+    def test_fetch_single_product(self):
+    
+        with self.app.app_context():
+            token = create_access_token('admin')
+            headers={'Authorization':f'Bearer {token}'}
+
+            response = self.test_client.post(
+                '/api/v1/products',
+                headers=headers,
+                content_type='application/json')
+            return(response.status)        
+
+        response = self.test_client.post('/api/v1/products/1',
+                            content_type='application/json',
+                            data=json.dumps(self.request_data)
+                            )      
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("You have fetched product",str(response.data))
