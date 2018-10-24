@@ -28,11 +28,13 @@ def add_sale_order():
 
 
 @app.route('/api/v1/sales/<int:saleId>', methods=['GET'])
-@jwt_required
+# @jwt_required      ----endpoint should accesible to admin and creator
 def fetch_a_sale_order(saleId):
-    current_user= get_jwt_identity()
-    if current_user == 'attendant':
-        return sale.fetch_sale(saleId)
+    sale.fetch_sale(saleId)
+
+    # current_user= get_jwt_identity()
+    # if current_user == 'attendant' or 'admin':
+    
     return jsonify({"Error":"Order not found , check to see that you wrote the right ID"})
 
     

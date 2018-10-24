@@ -30,25 +30,21 @@ class Product:
         return jsonify({"message":f'Product {productName} successfully added'}),200
 
     def get_products(self):
-        # products=[{
-        #     "productId":1,
-        #     "productName":"Capris",
-        #     "productPrice":30000
-        # }]
-       
+        
         if len(products) >1:
             return jsonify({
                 "message":"Available Products",
                 "Products":products
             }),200
         return jsonify({"message":"No products in inventory"}),404
+
     def get_a_product(self,productId):
         if len(products) <1:
             return jsonify ({
                 "Status":"Fail", 
                 "message":"No products in inventory"
                 }),404
-
+                
         for a_product in products:
             if a_product['productId']==productId:
                 return jsonify({
