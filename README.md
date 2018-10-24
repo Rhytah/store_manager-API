@@ -5,7 +5,7 @@ API endpoints to manage store data
 
 [![Build Status](https://travis-ci.org/Rhytah/store_manager-API.svg?branch=ft-161237635--admin-fetch-all-sale-records)](https://travis-ci.org/Rhytah/store_manager-API)
 
-[![Coverage Status](https://coveralls.io/repos/github/Rhytah/store_manager-API/badge.svg?branch=ft-161237635--admin-fetch-all-sale-records)](https://coveralls.io/github/Rhytah/store_manager-API?branch=ft-161237635--admin-fetch-all-sale-records)
+[![Coverage Status](https://coveralls.io/repos/github/Rhytah/store_manager-API/badge.svg?branch=ch-161341127-route-protection-and-validations)](https://coveralls.io/github/Rhytah/store_manager-API?branch=ch-161341127-route-protection-and-validations)
 
 
 [![codecov](https://codecov.io/gh/Rhytah/store_manager-API/branch/master/graph/badge.svg)](https://codecov.io/gh/Rhytah/store_manager-API)
