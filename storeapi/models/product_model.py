@@ -30,7 +30,6 @@ class Product:
         return jsonify({"message":f'Product {productName} successfully added'}),200
 
     def get_products(self):
-        
         if len(products) >1:
             return jsonify({
                 "message":"Available Products",
@@ -51,8 +50,8 @@ class Product:
                     "message":"You have fetched product",
                     "Product":a_product
                 }),200
-        return jsonify({
-        "Error":"Product not found , check to see that you wrote the right ID"
+            return jsonify({
+            "Error":"Product not found , check to see that you wrote the right ID"
         })
 
 

@@ -1,17 +1,11 @@
 from flask import jsonify, request
 
-
 class Sale:
     def __init__(self,**kwargs):
-        # self.saleId=args[0]
-        # self.productName=args[1]
-        # self.created_by=args[2]
-        # self.details=args[3]
-        self.sale_orders=[]
 
-        
-# add a sale order
-    def add_sale(self,*sale_data):
+        self.sale_orders=[]     
+
+    def add_sale(self,**sale_data):
         sale_data=request.get_json()
         saleId=len(self.sale_orders)+1
         productName=sale_data.get('productName')
@@ -25,8 +19,6 @@ class Sale:
         
         return jsonify({"message":f"{created_by}You have successfully created a sale order for {productName}"}),401
 
-
-# get all sale order
     def get_sales(self):
         if len(self.sale_orders) <1:
             return jsonify ({
@@ -39,7 +31,6 @@ class Sale:
                 "Sales":self.sale_orders
             }),200
 
-# get a specific sale order
     def fetch_sale(self,saleId):
         if len(self.sale_orders)<1:
             return jsonify({
@@ -52,5 +43,7 @@ class Sale:
                     return jsonify({
                         "message":"You have fetched a sale order",
                         "Sale_order":a_sale_order
-                    }),200      
+                    }),200
+                return jsonify({"Error":"Order not found , check to see that you wrote the right ID"})
+
         

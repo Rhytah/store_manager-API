@@ -26,8 +26,6 @@ class AuthTestCase(BaseTestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn("logged in as attendant", str(response.data))
 
-
-        # login tests
     def test_user_login_without_username_and_password(self):
         response = self.test_client.post('/api/v1/login',
                                     data=json.dumps(self.auth_data2),

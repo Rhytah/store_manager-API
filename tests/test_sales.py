@@ -21,15 +21,15 @@ class SalesTestCase(BaseTestCase):
             'myselfYou have successfully created a sale order', str(response.data)
         )
     def test_fetch_single_sale_order(self):
-        # with self.app.app_context():
-        #     token = create_access_token('admin')
-        #     headers = {'Authorization': f'Bearer {token}'}
-        #     response = self.test_client.get(
-        #         '/api/v1/sales/1',
-        #         headers=headers,
-        #         content_type='application/json'
-        #     )
-        #     return(response.status)
+        with self.app.app_context():
+            token = create_access_token('admin')
+            headers = {'Authorization': f'Bearer {token}'}
+            response = self.test_client.get(
+                '/api/v1/sales/1',
+                headers=headers,
+                content_type='application/json'
+            )
+            return(response.status)
         response= self.test_client.get(
             '/api/v1/sales/1',
             data=json.dumps(self.sale_data),
@@ -49,4 +49,5 @@ class SalesTestCase(BaseTestCase):
                 content_type='application/json'
             )
             return(response.status)
-        # self.assertEqual(200, response.status_code)
+        self.assertEqual(200, response.status_code)
+        self.assertIn("You have fetched a sale order", str(response.data))

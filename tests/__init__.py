@@ -36,8 +36,24 @@ class BaseTestCase(unittest.TestCase):
             "created_by":"myself",
             "details":"Mattress material"
         }
-
-    
-
+        self.sample_sales =[
+            {
+            "saleId":1,
+            "productName":"Foam",
+            "created_by":"myself",
+            "details":"Mattress material"
+            },
+            {
+            "saleId":2,
+            "productName":"Cushion",
+            "created_by":"myself",
+            "details":"Mattress material"
+            },
+            {
+            "saleId":3,
+            "productName":"Bedsheets",
+            "created_by":"myself",
+            "details":"Mattress material"
+            }]
 if __name__ == "__main__":
     unittest.main()

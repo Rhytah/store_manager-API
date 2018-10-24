@@ -4,9 +4,6 @@ from storeapi.models.user_model import User, admin,attendant
 from flask_jwt_extended import (JWTManager, create_access_token,
                                 get_jwt_identity, jwt_required)
 
-
-# app = Flask(__name__)
-
 app.config['JWT_SECRET_KEY'] = 'andela13'  
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] =False
 jwt = JWTManager(app)
@@ -16,14 +13,6 @@ jwt = JWTManager(app)
 @app.route('/index')
 def index():
     return "StoreManager App. Manage your Products and Sales efficiently"
-
-# @app.route('/protected', methods=['GET'])
-# @jwt_required
-# def protected():
-#     # Access the identity of the current user with get_jwt_identity
-#     current_user = get_jwt_identity()
-#     return jsonify(logged_in_as=current_user), 200
-
 
 @app.route('/api/v1/login', methods=["POST"])
 def login():
@@ -44,5 +33,3 @@ def login():
                         "access_token": access_token}), 200
     else:
         return jsonify ({"message":"Invalid username/password"}) , 401
-
-    
