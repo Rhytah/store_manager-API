@@ -1,8 +1,9 @@
+from flask import Flask
+# from app import create_app
+from storeapi import app
 
-from app import create_app
-from storeapi.views import app
-
-app = create_app('development')
+# app = create_app('development')
+app = Flask(__name__)
 
 
 if __name__ == '__main__':
