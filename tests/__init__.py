@@ -1,6 +1,6 @@
-from storeapi.views import app
+from storeapi import app
 import json
-from storeapi.models import Product, products
+from storeapi.models.product_model import Product, products
 import unittest
 
 class BaseTestCase(unittest.TestCase):
@@ -21,6 +21,10 @@ class BaseTestCase(unittest.TestCase):
             "username":'admin',
             "password":'password'
         }
+        self.auth_data_attendant ={
+            "username":"attendant",
+            "password":"password"
+        }
         self.request_data={
             "productId":1,
             "productName":"Foam",
@@ -33,15 +37,7 @@ class BaseTestCase(unittest.TestCase):
             "details":"Mattress material"
         }
 
-    def test_user_login(self):
-        
-        response = self.test_client.post('/api/v1/login',
-                                    data=json.dumps(self.auth_data),
-                                    content_type='application/json'
-                                    )
-        self.assertEqual(response.status_code, 200)
-        self.assertIn('access_token', str(response.data))
-
+    
 
 if __name__ == "__main__":
     unittest.main()
