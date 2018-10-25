@@ -1,12 +1,9 @@
 from storeapi import app
-from storeapi.views.auth_views import app
-from storeapi.views.sale_views import app
-from storeapi.views.product_views import app
 from flask import Flask
 from config import app_configuration
 from flask_jwt_extended import (JWTManager, create_access_token,
                                 get_jwt_identity, jwt_required)
-
+app=Flask(__name__)
 jwt = JWTManager(app)
 
 def create_app(mode):
