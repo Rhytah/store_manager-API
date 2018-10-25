@@ -1,4 +1,4 @@
-from storeapi import app
+from storeapi import app 
 from flask import Flask
 from config import app_configuration
 from flask_jwt_extended import (JWTManager, create_access_token,

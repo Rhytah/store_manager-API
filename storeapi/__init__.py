@@ -6,5 +6,5 @@ app = Flask(__name__)
 
 from storeapi.views import auth_views, product_views,sale_views
 
-
-
+if __name__ == '__main__':
+    app.run()
