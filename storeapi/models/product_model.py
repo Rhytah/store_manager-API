@@ -14,17 +14,21 @@ class Product:
         productPrice = request_data.get('productPrice')
 
 
-        if not productName or productName =='  ' or productName == type(int):
-            return({'message':"Product Name cannot be blank or a number"})
+        if productName ==" " or not isinstance(productName,str):
+            return jsonify({'message':"Product Name cannot be blank or a number"})
 
-        if productPrice =="":
-            return({'message':"Please insert digits"})
+        if not isinstance (productPrice,int):
+            return jsonify({'message':"Price can only be digits"})
 
         a_product={"productId":productId,"productName":productName,"productPrice":productPrice}
         
         
-        # if a_product in products:
-        #     return jsonify({"Alert":"product already added"})
+        if products:
+            for a_product in products:
+                if a_product['productName']== productName:
+                    return jsonify({"Alert":"PRODUCT ALREADY EXISTS",
+                    "message":"Consider modifying existing product data"})
+                    
         products.append(a_product)
 
         return jsonify({"message":f'Product {productName} successfully added'}),200
