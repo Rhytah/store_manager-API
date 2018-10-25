@@ -1,9 +1,6 @@
 from flask import Flask
-# from app import create_app
-from storeapi import app
 
-# app = create_app('development')
-app = Flask(__name__)
+from storeapi import app
 
 
 if __name__ == '__main__':
