@@ -9,15 +9,17 @@ class Sale:
         sale_data=request.get_json()
         saleId=len(self.sale_orders)+1
         productName=sale_data.get('productName')
-        created_by=sale_data.get('created_by')
+        cost=sale_data.get('cost')
+        quantity=sale_data.get('quantity')
+        created_by='attendant'
         details =sale_data.get('details')
+        total=quantity*cost
 
-        a_sale_order={'saleId':saleId, 'productName':productName, 'created_by':created_by,'details':details}
-        if a_sale_order in self.sale_orders:
-            return jsonify({"Alert":"Sale order already exists"})
+        a_sale_order={'saleId':saleId, 'productName':productName,"cost":cost, "quantity":quantity,'created_by':created_by,'details':details, "total":total}
+        
         self.sale_orders.append(a_sale_order)
         
-        return jsonify({"message":f"{created_by}You have successfully created a sale order for {productName}"}),401
+        return jsonify({"message":f"{created_by} ,You have successfully created a sale order for {productName}"}),401
 
     def get_sales(self):
         if len(self.sale_orders) <1:
@@ -27,7 +29,7 @@ class Sale:
 
         if len(self.sale_orders) >1:
             return jsonify({
-                "message":"Sale orders",
+                "message":"Current Sale orders",
                 "Sales":self.sale_orders
             }),200
 
