@@ -50,6 +50,7 @@ This is version one"v1" of the API
 ## End Points(Required Features)
 |           End Point                                 |            Functionality                   |
 |   -----------------------------------------------   | -----------------------------------------  |
+|     POST api/v1/login                               |             Login to get access token      |
 |     POST api/v1/products                            |             Create a product               |
 |     GET  api/v1/products                            |             Fetch all products             |
 |     GET  api/v1/products/<int:productId>            |             Fetch a product                |
@@ -59,5 +60,9 @@ This is version one"v1" of the API
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/fd78148dfa33db6ba32c)
 
+## Hosted version
+```
+https://thriftystoremanager.herokuapp.com/
+```
 ## Author
 - [Rhytah] https://github.com/Rhytah
