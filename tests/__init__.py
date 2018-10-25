@@ -31,29 +31,24 @@ class BaseTestCase(unittest.TestCase):
             "productPrice":3000
         }
         self.sale_data={
-            "saleId":'1',
+            "saleId":1,
             "productName":"Foam",
-            "created_by":"myself",
-            "details":"Mattress material"
+            "cost":5000,
+            "quantity":4,
+            "created_by":"attendant",
+            "details":"Mattress material",
+            "total":20000
         }
         self.sample_sales =[
             {
             "saleId":1,
             "productName":"Foam",
-            "created_by":"myself",
-            "details":"Mattress material"
-            },
-            {
-            "saleId":2,
-            "productName":"Cushion",
-            "created_by":"myself",
-            "details":"Mattress material"
-            },
-            {
-            "saleId":3,
-            "productName":"Bedsheets",
-            "created_by":"myself",
-            "details":"Mattress material"
-            }]
+            "cost":5000,
+            "quantity":4,
+            "created_by":"attendant",
+            "details":"Mattress material",
+            "total":20000
+            }
+            ]
 if __name__ == "__main__":
     unittest.main()
