@@ -29,7 +29,7 @@ class Sale:
 
         if len(self.sale_orders) >1:
             return jsonify({
-                "message":"Current Sale orders",
+                "message":"Fetched Sale orders",
                 "Sales":self.sale_orders
             }),200
 
@@ -43,7 +43,7 @@ class Sale:
             for a_sale_order in self.sale_orders:
                 if a_sale_order['saleId']==saleId:
                     return jsonify({
-                        "message":"Current sale orders",
+                        "message":"Fetched sale order",
                         "Sale_order":a_sale_order
                     }),200
                 
