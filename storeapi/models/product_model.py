@@ -6,10 +6,12 @@ class Product:
         self.productName=productName
         self.productPrice=productPrice
 
+        
+
     def add_a_product(self,*request_data):
         request_data=request.get_json()
         
-        productId=len(products)+1
+        productId= len(products)+1
         productName= request_data.get('productName')
         productPrice = request_data.get('productPrice')
 
@@ -21,14 +23,11 @@ class Product:
             return jsonify({'message':"Price can only be digits"})
 
         a_product={"productId":productId,"productName":productName,"productPrice":productPrice}
-        
-        
-        if products:
-            for a_product in products:
-                if a_product['productName']== productName:
-                    return jsonify({"Alert":"PRODUCT ALREADY EXISTS",
-                    "message":"Consider modifying existing product data"})
-                    
+        # for a_product in products:
+        #     if a_product['productName']== productName:
+
+        #         return jsonify({"Alert":"PRODUCT ALREADY EXISTS",
+        #         "message":"Consider modifying existing product data"})
         products.append(a_product)
 
         return jsonify({"message":f'Product {productName} successfully added'}),200
