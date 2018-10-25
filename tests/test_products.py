@@ -22,9 +22,8 @@ class RequestTestCase(BaseTestCase):
                 content_type='application/json'
             )
             return(response.status)
-        self.assertIn(
-            'Access denied, Log in as admin to add Products', str(response.data)
-        )
+        self.assertIn('Access denied, Log in as admin to add Products', str(response.data))
+    
     def test_admin_can_add_product(self): 
         with self.app.app_context():
             token = create_access_token('admin')

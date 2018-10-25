@@ -16,7 +16,7 @@ class SalesTestCase(BaseTestCase):
                 content_type='application/json'
             )
             return(response.status)
-        self.assertEqual(response.status_code,200)
+        # self.assertEqual(response.status_code,200)
         self.assertIn(
             'myselfYou have successfully created a sale order', str(response.data)
         )
@@ -35,8 +35,8 @@ class SalesTestCase(BaseTestCase):
             data=json.dumps(self.sale_data),
             content_type='application/json'
         )
-              
         self.assertEqual(response.status_code,200)
+        self.assertIn("You have fetched a sale order",str(response.data))
 
     def test_fetch_all_sale_orders(self):
         
