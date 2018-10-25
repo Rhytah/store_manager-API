@@ -23,8 +23,8 @@ class Product:
         a_product={"productId":productId,"productName":productName,"productPrice":productPrice}
         
         
-        if a_product['productName'] in products:
-            return jsonify({"Alert":"product already added"})
+        # if a_product in products:
+        #     return jsonify({"Alert":"product already added"})
         products.append(a_product)
 
         return jsonify({"message":f'Product {productName} successfully added'}),200
@@ -50,6 +50,7 @@ class Product:
                     "message":"You have fetched product",
                     "Product":a_product
                 }),200
+        
             return jsonify({
             "Error":"Product not found , check to see that you wrote the right ID"
         })

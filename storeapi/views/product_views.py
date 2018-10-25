@@ -17,7 +17,7 @@ admin = User(1, 'admin','pass', True )
 def add_products():
     current_user = get_jwt_identity()
     if current_user == 'admin':
-        return product.add_a_product(),200
+        return product.add_a_product()
     return jsonify({"message":"Access denied, Log in as admin to add Products"}), 401
 
 @app.route('/api/v1/products', methods=['GET'])

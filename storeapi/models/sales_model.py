@@ -41,9 +41,10 @@ class Sale:
             for a_sale_order in self.sale_orders:
                 if a_sale_order['saleId']==saleId:
                     return jsonify({
-                        "message":"You have fetched a sale order",
+                        "message":"Current sale orders",
                         "Sale_order":a_sale_order
                     }),200
-                return jsonify({"Error":"Order not found , check to see that you wrote the right ID"})
+                
+        return jsonify({"Error":"Order not found , check to see that you wrote the right ID"})
 
         
