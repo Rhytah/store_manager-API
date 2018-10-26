@@ -32,4 +32,4 @@ def login():
         return jsonify({"message":"logged in as attendant",\
                         "access_token": access_token}), 200
     else:
-        return jsonify ({"message":"Invalid username/password"}) , 401
+        return jsonify ({"message":"Invalid username/password"}) , 40

@@ -15,7 +15,6 @@ class Product:
         productName= request_data.get('productName')
         productPrice = request_data.get('productPrice')
 
-
         if productName ==" " or not isinstance(productName,str):
             return jsonify({'message':"Product Name cannot be blank or a number"})
 
@@ -23,11 +22,7 @@ class Product:
             return jsonify({'message':"Price can only be digits"})
 
         a_product={"productId":productId,"productName":productName,"productPrice":productPrice}
-        # for a_product in products:
-        #     if a_product['productName']== productName:
-
-        #         return jsonify({"Alert":"PRODUCT ALREADY EXISTS",
-        #         "message":"Consider modifying existing product data"})
+  
         products.append(a_product)
 
         return jsonify({"message":f'Product {productName} successfully added'}),200
@@ -53,20 +48,3 @@ class Product:
                     "message":"You have fetched product",
                     "Product":a_product
                 }),200
-        
-        #     return jsonify({
-        #     "Error":"Product not found , check to see that you wrote the right ID"
-        # })
-
-
-
-
-
-
-
-
-
-
-
-
-

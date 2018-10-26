@@ -26,6 +26,4 @@ def fetch_products():
 
 @app.route('/api/v1/products/<int:productId>',methods=['GET'])
 def fetch_a_specific_product(productId):
-    return product.get_a_product(productId)
-
-    
+    return product.get_a_product(productId)   

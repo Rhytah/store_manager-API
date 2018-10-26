@@ -7,6 +7,3 @@ class User:
         
 admin = User(1, 'admin','pass', True )
 attendant = User(2,'attendant','password', False)
-
-
-
