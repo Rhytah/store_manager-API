@@ -1,4 +1,7 @@
 from flask import jsonify, request
+import re
+
+
 products=[]
 class Product:
     def ___init__(self, productId, productName,productPrice):
@@ -15,13 +18,28 @@ class Product:
         productName= request_data.get('productName')
         productPrice = request_data.get('productPrice')
 
-        if productName ==" " or not isinstance(productName,str):
-            return jsonify({'message':"Product Name cannot be blank or a number"})
-
-        if not isinstance (productPrice,int):
-            return jsonify({'message':"Price can only be digits"})
+        if not productName:
+            return "Product Name is missing"
+        if productName == " ":
+            return "Product Name is missing"
+        if not re.match(r"^([a-zA-Z]+[-_\s])*[a-zA-Z]+$", productName):
+            return "product name must have no white spaces"
+        if not re.match(r"^[0-9]*$", productPrice):
+            return "Product price must be only digits and must have no white spaces"    
+        if len(productName) < 3:
+            return "product name should be more than 4 characters long"
+        if not productPrice:
+            return "Product price is missing"
+        if int(productPrice) < 1:
+            return "Product price should be greater than zero"    
+        if productPrice == " ":
+            return "Product price is missing"    
+        for a_product in range(len(products)):
+            return "product already exits"
+    
 
         a_product={"productId":productId,"productName":productName,"productPrice":productPrice}
+
   
         products.append(a_product)
 
